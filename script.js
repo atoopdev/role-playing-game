@@ -1,22 +1,27 @@
+const heroElementID = "hero"
+const heroName = "Wizard"
+const heroAvatar = "images/wizard.png"
+const heroHealth = 60
+const heroDiceRoll = 6
 
+const monsterElementID = "monster"
+const monsterName = "Orc"
+const monsterAvatar = "images/orc.png"
+const monsterHealth = 10
+const monsterDiceRoll = 4;
 
-document.getElementById("hero").innerHTML = `
-                <!-- 1. Render the Wizard card -->
-                <div class="character-card">
-                    <h4 class="name"> Wizard </h4>
-                    <img class="avatar" src="images/wizard.png"/>
-                    <p class="health">health: <b> 60 </b></p>
-                    <div class="dice-container"><div class="dice"> 6 </div>
-                    </div>
-                </div>        `
+function renderCharacter(elementid, name, avatar, health, diceroll){
+    document.getElementById(elementid).innerHTML = `
+    <div class="character-card">
+        <h4 class="name"> ${name} </h4>
+        <img class="avatar" src="${avatar}"/>
+        <p class="health">health: <b> ${health} </b></p>
+        <div class="dice-container"><div class="dice"> ${diceroll} </div>
+        </div>
+    </div>        `
+}
 
-document.getElementById("monster").innerHTML = `
-                <!-- 2. Render the Orc card from index.js -->
-                <div class="character-card">
-                    <h4 class="name"> Orc </h4>
-                    <img class="avatar" src="images/orc.png"/>
-                    <p class="health">health: <b> 10 </b></p>
-                    <div class="dice-container"><div class="dice"> 4 </div></div>
-                </div>
-                `
+renderCharacter(heroElementID, heroName, heroAvatar, heroHealth, heroDiceRoll)
+renderCharacter(monsterElementID, monsterName, monsterAvatar, monsterHealth, monsterDiceRoll)
+
 
