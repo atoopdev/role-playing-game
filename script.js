@@ -7,8 +7,6 @@ const hero = {
     diceRoll : 6
 }
 
-// const {elementID, name, avatar, health, diceRoll} = hero
-
 const monster = {
     elementID : "monster",
     name : "Orc",
@@ -16,15 +14,17 @@ const monster = {
     health : 10,
     diceRoll : 4
 }
-// const {elementID, name, avatar, health, diceRoll} = monster
+
 
 function renderCharacter(data){
-    document.getElementById(data.elementID).innerHTML = `
+    const {elementID, name, avatar, health, diceRoll} = data
+
+    document.getElementById(elementID).innerHTML = `
     <div class="character-card">
-        <h4 class="name"> ${data.name} </h4>
-        <img class="avatar" src="${data.avatar}"/>
-        <p class="health">health: <b> ${data.health} </b></p>
-        <div class="dice-container"><div class="dice"> ${data.diceRoll} </div>
+        <h4 class="name"> ${name} </h4>
+        <img class="avatar" src="${avatar}"/>
+        <p class="health">health: <b> ${health} </b></p>
+        <div class="dice-container"><div class="dice"> ${diceRoll} </div>
         </div>
     </div>        `
 }
