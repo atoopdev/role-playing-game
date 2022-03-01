@@ -4,7 +4,6 @@ const hero = {
     name : "Wizard",
     avatar : "images/wizard.png",
     health : 60,
-    diceRoll : [3,1,4],
     diceCount: 3
 }
 
@@ -13,20 +12,21 @@ const monster = {
     name : "Orc",
     avatar : "images/orc.png",
     health : 10,
-    diceRoll : [2],
     diceCount: 1
 }
 
 
 function renderCharacter(data){
-    const {elementID, name, avatar, health, diceRoll, diceCount} = data
+    const {elementID, name, avatar, health, diceCount} = data
     
-
+    // v1
     // map iterates through entire array performing function on each element, returns new array
     // .join('') converts array to string with no spaces to delineate elements
-     const diceHTML = diceRoll.map(function(num){
-         return `<div class="dice">${num}</div>`
-    }).join('')
+    //  const diceHTML = diceRoll.map(function(num){
+    //      return `<div class="dice">${num}</div>`
+    // }).join('')
+
+    const diceHTML = getDiceHTML(diceCount)
 
 
     document.getElementById(elementID).innerHTML = `
@@ -58,4 +58,12 @@ function getDiceRollArray(diceCount){
 
 }
 
-getDiceRollArray(3);
+// v2
+// generates a random number for each roll, then uses map to add html to array element, then converts to string, using join('') to remove commas
+function getDiceHTML(diceCount){
+return getDiceRollArray(diceCount).map(function(num){
+    return `<div class="dice">${num}</div>
+    `
+}).join('')
+}
+
