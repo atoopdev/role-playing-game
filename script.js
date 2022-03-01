@@ -20,11 +20,14 @@ const monster = {
 
 function renderCharacter(data){
     const {elementID, name, avatar, health, diceRoll, diceCount} = data
-    let diceHTML = ""
+    
 
-    for (let i=0; i<diceCount; i++){
-        diceHTML += `<div class="dice">${diceRoll[i]}</div>`
-    }
+    // map iterates through entire array performing function on each element, returns new array
+    // .join('') converts array to string with no spaces to delineate elements
+     const diceHTML = diceRoll.map(function(num){
+         return `<div class="dice">${num}</div>`
+    }).join('')
+
 
     document.getElementById(elementID).innerHTML = `
     <div class="character-card">
