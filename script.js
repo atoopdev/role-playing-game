@@ -44,14 +44,12 @@ renderCharacter(monster)
 
 // return array of random numbers = length of diceCount
 function getDiceRollArray(diceCount){
-    let randomNum;
+    // holds each dice roll value
     const randomNumbers = []
 
     for(let i=0;i<diceCount;i++){
         // number between 1 and 6
-        randomNum = Math.floor(Math.random() * 6) +1;
-        console.log("Dice roll: ",randomNum);
-        randomNumbers.push(randomNum)
+        randomNumbers.push(Math.floor(Math.random() * 6) +1)
     }
     console.log("Array of dice rolls: ", randomNumbers)
     return randomNumbers;
