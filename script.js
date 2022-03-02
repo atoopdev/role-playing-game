@@ -44,13 +44,20 @@ renderCharacter(monster)
 
 // return array of random numbers = length of diceCount
 function getDiceRollArray(diceCount){
-    // holds each dice roll value
-    const randomNumbers = []
+    
+    // v2
+    // create new array with length diceCount, autofill with zeros
+    // for each element, generate random number simulating dice roll
+    // save to array and return
+    return new Array(diceCount).fill("0").map(function(num){
+        return Math.floor(Math.random() * 6) +1
+    })
 
-    for(let i=0;i<diceCount;i++){
-        // number between 1 and 6
-        randomNumbers.push(Math.floor(Math.random() * 6) +1)
-    }
+    // v1
+    // for(let i=0;i<diceCount;i++){
+    //     // number between 1 and 6
+    //     randomNumbers.push(Math.floor(Math.random() * 6) +1)
+    // }
     console.log("Array of dice rolls: ", randomNumbers)
     return randomNumbers;
     
@@ -59,7 +66,7 @@ function getDiceRollArray(diceCount){
 }
 
 // v2
-// generates a random number for each roll, then uses map to add html to array element, then converts to string, using join('') to remove commas
+// call function that generates a random number for each roll and returns completed array for all rolls, then uses map to add html to array element, converts array to string, using join('') to remove commas
 function getDiceHTML(diceCount){
 return getDiceRollArray(diceCount).map(function(num){
     return `<div class="dice">${num}</div>
