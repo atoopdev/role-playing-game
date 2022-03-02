@@ -15,32 +15,56 @@ const monster = {
     diceCount: 1
 }
 
-
-function renderCharacter(data){
-    const {elementID, name, avatar, health, diceCount} = data
-    
-    // v1
-    // map iterates through entire array performing function on each element, returns new array
-    // .join('') converts array to string with no spaces to delineate elements
-    //  const diceHTML = diceRoll.map(function(num){
-    //      return `<div class="dice">${num}</div>`
-    // }).join('')
-
-    const diceHTML = getDiceHTML(diceCount)
-
-
-    document.getElementById(elementID).innerHTML = `
-    <div class="character-card">
-        <h4 class="name"> ${name} </h4>
-        <img class="avatar" src="${avatar}"/>
-        <p class="health">health: <b> ${health} </b></p>
+function Character(data){
+    this.elementID = data.elementID
+    this.name = data.name
+    this.avatar = data.avatar
+    this.health = data.health
+    this.diceCount = data.diceCount
+    this.getCharacterHtml = function(){
+        const diceHTML = getDiceHTML(this.diceCount)  
+        document.getElementById(this.elementID).innerHTML = `
+        <div class="character-card">
+        <h4 class="name"> ${this.name} </h4>
+        <img class="avatar" src="${this.avatar}"/>
+        <p class="health">health: <b> ${this.health} </b></p>
         <div class="dice-container">${diceHTML}
         </div>
-    </div>        `
+    </div> `
+    }
 }
 
-renderCharacter(hero)
-renderCharacter(monster)
+const wizard = new Character(hero)
+const evilMonster = new Character(monster)
+
+wizard.getCharacterHtml()
+evilMonster.getCharacterHtml()
+
+// function renderCharacter(data){
+//     const {elementID, name, avatar, health, diceCount} = data
+    
+//     // v1
+//     // map iterates through entire array performing function on each element, returns new array
+//     // .join('') converts array to string with no spaces to delineate elements
+//     //  const diceHTML = diceRoll.map(function(num){
+//     //      return `<div class="dice">${num}</div>`
+//     // }).join('')
+
+//     const diceHTML = getDiceHTML(diceCount)
+
+
+//     document.getElementById(elementID).innerHTML = `
+//     <div class="character-card">
+//         <h4 class="name"> ${name} </h4>
+//         <img class="avatar" src="${avatar}"/>
+//         <p class="health">health: <b> ${health} </b></p>
+//         <div class="dice-container">${diceHTML}
+//         </div>
+//     </div>        `
+// }
+
+// renderCharacter(hero)
+// renderCharacter(monster)
 
 // return array of random numbers = length of diceCount
 function getDiceRollArray(diceCount){
