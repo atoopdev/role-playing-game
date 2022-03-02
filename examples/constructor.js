@@ -50,11 +50,14 @@ const hotel2 = {
 }
 
 function NationalParkHotels(data){
-    this.name = data.name
-    this.rooms = data.rooms
-    this.stars = data.stars
-    this.costPerNightAdult = data.costPerNightAdult
-    this.costPerNightChild = data.costPerNightChild
+    // this.name = data.name
+    // this.rooms = data.rooms
+    // this.stars = data.stars
+    // this.costPerNightAdult = data.costPerNightAdult
+    // this.costPerNightChild = data.costPerNightChild
+    // copy an object using Object.assign
+    // assigns everything inside data to this
+    Object.assign(this, data)
     this.summarizeHotel = function(){
         const totalPrice = this.costPerNightAdult * 2 + this.costPerNightChild *2
         console.log(`A one night stay 
@@ -67,3 +70,33 @@ const safariHotel = new NationalParkHotels(hotel1)
 const leopardHotel = new NationalParkHotels(hotel2)
 safariHotel.summarizeHotel()
 leopardHotel.summarizeHotel()
+
+// copy an object using Object.assign practice
+
+const sandraKayeProfileData = {
+	name: 'Sandra Kaye',
+	portfolio: 'www.sandrasportfolio.com',
+	currentJob: 'Google',
+	currentSalary: '400k'	
+}
+
+/*
+Challenge
+1. Use Object.assign to cut 4 lines of code from the constructor function.
+*/
+
+
+function DevProfile(data){
+	// this.name = data.name
+	// this.portfolio = data.portfolio
+	// this.currentJob = data.currentJob
+	// this.currentSalary = data.currentSalary
+    Object.assign(this, data)
+	this.summariseDev = function(){
+	console.log(`${this.name}'s porfolio is at ${this.portfolio} and they work at ${this.currentJob}. Their current salary is ${this.currentSalary}.`)
+}
+}
+
+const sandraKaye = new DevProfile(sandraKayeProfileData)
+sandraKaye.summariseDev()
+

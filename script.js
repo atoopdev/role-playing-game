@@ -16,18 +16,20 @@ const monster = {
 }
 
 function Character(data){
-    this.elementID = data.elementID
-    this.name = data.name
-    this.avatar = data.avatar
-    this.health = data.health
-    this.diceCount = data.diceCount
+    // this.elementID = data.elementID
+    // this.name = data.name
+    // this.avatar = data.avatar
+    // this.health = data.health
+    // this.diceCount = data.diceCount
+    Object.assign(this, data)
     this.getCharacterHtml = function(){
-        const diceHTML = getDiceHTML(this.diceCount)  
-        document.getElementById(this.elementID).innerHTML = `
+        const { elementID, name, avatar, health, diceCount } = this;
+        const diceHTML = getDiceHTML(diceCount)  
+        document.getElementById(elementID).innerHTML = `
         <div class="character-card">
-        <h4 class="name"> ${this.name} </h4>
-        <img class="avatar" src="${this.avatar}"/>
-        <p class="health">health: <b> ${this.health} </b></p>
+        <h4 class="name"> ${name} </h4>
+        <img class="avatar" src="${avatar}"/>
+        <p class="health">health: <b> ${health} </b></p>
         <div class="dice-container">${diceHTML}
         </div>
     </div> `
