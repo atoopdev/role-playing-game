@@ -22,9 +22,18 @@ function Character(data){
     // this.health = data.health
     // this.diceCount = data.diceCount
     Object.assign(this, data)
+
+    this.getDiceHTML = function(diceCount){
+        
+        return getDiceRollArray(diceCount).map(function(num){
+            return `<div class="dice">${num}</div>
+            `
+        }).join('')
+    }
+
     this.getCharacterHtml = function(){
         const { elementID, name, avatar, health, diceCount } = this;
-        const diceHTML = getDiceHTML(diceCount)  
+        const diceHTML = this.getDiceHTML(diceCount)  
         document.getElementById(elementID).innerHTML = `
         <div class="character-card">
         <h4 class="name"> ${name} </h4>
@@ -91,12 +100,5 @@ function getDiceRollArray(diceCount){
 
 }
 
-// v2
-// call function that generates a random number for each roll and returns completed array for all rolls, then uses map to add html to array element, converts array to string, using join('') to remove commas
-function getDiceHTML(diceCount){
-return getDiceRollArray(diceCount).map(function(num){
-    return `<div class="dice">${num}</div>
-    `
-}).join('')
-}
+
 
