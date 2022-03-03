@@ -1,18 +1,20 @@
+const characterData = {
 
-const hero = {
+hero: {
     elementID :"hero",
     name : "Wizard",
     avatar : "images/wizard.png",
     health : 60,
     diceCount: 3
-}
+},
 
-const monster = {
+monster : {
     elementID :"monster",
     name : "Orc",
     avatar : "images/orc.png",
     health : 10,
     diceCount: 1
+}
 }
 
 function Character(data){
@@ -47,10 +49,11 @@ function Character(data){
     </div> `
     }
 }
+  
 
 // create characters
-const wizard = new Character(hero)
-const evilMonster = new Character(monster)
+const wizard = new Character(characterData.hero)
+const evilMonster = new Character(characterData.monster)
 
 // render cards
 function render(data){
