@@ -1,5 +1,6 @@
 import characterData from './data.js'
 import Character from './character.js'
+import { getDiceRollArray } from './utils.js'
 
 // create characters
 const wizard = new Character(characterData.hero)
@@ -16,7 +17,10 @@ render()
 document.getElementById("attack-button").addEventListener("click", attack)
 
 function attack(){
+    wizard.getDiceHTML()
+    evilMonster.getDiceHTML()
     render()
+    
 }
 
     

@@ -1,4 +1,4 @@
-import {getDiceRollArray} from './utils.js'
+import {getDicePlaceholderHtml, getDiceRollArray} from './utils.js'
 
 function Character(data){
     // this.elementID = data.elementID
@@ -8,18 +8,32 @@ function Character(data){
     // this.diceCount = data.diceCount
     Object.assign(this, data)
 
-    this.getDiceHTML = function(diceCount){
-        
-        return getDiceRollArray(diceCount).map(function(num){
+        // sets placeholder dice before attack button clicked
+    this.diceArray = getDicePlaceholderHtml(this.diceCount)
+
+
+    this.getDiceHTML = function(){
+        this.currentDiceScore = getDiceRollArray(this.diceCount)
+        this.diceArray = this.currentDiceScore.map(function(num){
             return `<div class="dice">${num}</div>
             `
         }).join('')
+
+        // this.diceArray = getDiceRollArray(diceCount).map(function(num){
+        //     return `<div class="dice">${num}</div>
+        //    `
+        // }).join('')
     }
 
-    this.getCharacterHtml = function(){
-        const { elementID, name, avatar, health, diceCount } = this;
 
-        const diceHTML = this.getDiceHTML(diceCount)  
+   
+
+
+
+    this.getCharacterHtml = function(){
+        const { elementID, name, avatar, health, diceCount,currentDiceScore, diceArray } = this;
+
+        // const diceHTML = this.getDiceHTML(diceCount)  
 
         // document.getElementById(elementID).innerHTML = 
         return `
@@ -27,10 +41,11 @@ function Character(data){
         <h4 class="name"> ${name} </h4>
         <img class="avatar" src="${avatar}"/>
         <p class="health">health: <b> ${health} </b></p>
-        <div class="dice-container">${diceHTML}
+        <div class="dice-container">${diceArray}
         </div>
     </div> `
     }
-}
+
+} 
 
 export default Character
