@@ -6,13 +6,13 @@ const wizard = new Character(characterData.hero)
 const evilMonster = new Character(characterData.monster)
 
 // render cards
-function render(data){
-    const { elementID} = data;
-document.getElementById(elementID).innerHTML = data. getCharacterHtml();
+function render(){
+document.getElementById('hero').innerHTML = wizard.getCharacterHtml();
+document.getElementById('monster').innerHTML = evilMonster.getCharacterHtml();
 }
 
-render(wizard)
-render(evilMonster)
+render()
+
 
     
 
