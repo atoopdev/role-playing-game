@@ -10,9 +10,14 @@ function render(){
 document.getElementById('hero').innerHTML = wizard.getCharacterHtml();
 document.getElementById('monster').innerHTML = evilMonster.getCharacterHtml();
 }
-
 render()
 
+// setup attack button
+document.getElementById("attack-button").addEventListener("click", attack)
+
+function attack(){
+    render()
+}
 
     
 
