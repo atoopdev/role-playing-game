@@ -17,17 +17,22 @@ render()
 document.getElementById("attack-button").addEventListener("click", attack)
 
 function attack(){
+    
     wizard.getDiceHTML()
     evilMonster.getDiceHTML()
     // pass score of opponent
     wizard.takeDamage(evilMonster.currentDiceScore)
     evilMonster.takeDamage(wizard.currentDiceScore)
     render()
-    
+    if((wizard.dead) || (evilMonster.dead)){
+        endGame()
+    }
     
 }
 
-    
+function endGame(){
+    console.log("Game over")
+} 
 
 
 

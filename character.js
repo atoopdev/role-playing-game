@@ -42,22 +42,22 @@ function Character(data){
     }
 
     this.takeDamage = function(attackScoreArray){
-        
-        console.log(`${this.name} is damaged. ${attackScoreArray}`)
-        console.log(`Current health score: ${this.health}`)
+
+        // sum all dice rolls
         const totalAttackScore = attackScoreArray.reduce(function(total, roll){
             return total + roll
         })
-        console.log(`Total damamge: ${totalAttackScore}`)
+
+        // keep health score from going negative
         if(this.health<totalAttackScore){
-            this.health =0
+            this.health = 0
+            this.dead = true
+           
         }else{
             this.health -= totalAttackScore
         }
        
-         
-       
-        console.log(`New health score: ${this.health}`)
+        
     }
 
 } 
