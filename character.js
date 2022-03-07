@@ -25,11 +25,6 @@ function Character(data){
         // }).join('')
     }
 
-
-   
-
-
-
     this.getCharacterHtml = function(){
         const { elementID, name, avatar, health, diceCount,currentDiceScore, diceArray } = this;
 
@@ -44,6 +39,12 @@ function Character(data){
         <div class="dice-container">${diceArray}
         </div>
     </div> `
+    }
+
+    this.takeDamage = function(attackScoreArray){
+        
+        console.log(`${this.name} is damaged. ${attackScoreArray}`)
+        
     }
 
 } 
