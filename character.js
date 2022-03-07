@@ -44,7 +44,20 @@ function Character(data){
     this.takeDamage = function(attackScoreArray){
         
         console.log(`${this.name} is damaged. ${attackScoreArray}`)
-        
+        console.log(`Current health score: ${this.health}`)
+        const totalAttackScore = attackScoreArray.reduce(function(total, roll){
+            return total + roll
+        })
+        console.log(`Total damamge: ${totalAttackScore}`)
+        if(this.health<totalAttackScore){
+            this.health =0
+        }else{
+            this.health -= totalAttackScore
+        }
+       
+         
+       
+        console.log(`New health score: ${this.health}`)
     }
 
 } 
