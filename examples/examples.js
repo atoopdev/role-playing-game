@@ -39,3 +39,23 @@ const gradeTotals = grades.reduce(function(total, currentElement){
     return total + currentElement
 })
 console.log(`Grade totals: ${gradeTotals/grades.length}`)
+
+// ----------------------------------------------------------------------
+
+// ternary operator
+// const exerciseTimeMins = 40
+
+// // if exercise <30 output statement after ? else outout statement after :
+// const message = exerciseTimeMins < 30 ? 'You need to try harder!' 
+//     : exerciseTimeMins < 60 ? 'Doing good!' 
+//     : 'Excellent!'
+
+// console.log(message)
+
+const playerGuess = 3
+const correctAnswer = 6
+
+const message = (playerGuess === correctAnswer) ? 'Correct!'
+: (playerGuess > correctAnswer)? 'too high!'
+: 'too low!'
+console.log(message)
