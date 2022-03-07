@@ -31,7 +31,22 @@ function attack(){
 }
 
 function endGame(){
-    console.log("Game over")
+    const endMessage = (wizard.dead && evilMonster.dead) ? 'No victors - everyone dead'
+    : (wizard.dead) ? 'Orc wins'
+    : 'Wizard wins'
+
+    const endEmoji = (wizard.health>0) ? '🔮'
+    : (evilMonster.health>0) ? '💀'
+    : "💀 💀"
+    
+    // replaces content of entire body
+    document.body.innerHTML = `
+    <div class="end-game">
+        <h2>Game Over</h2>
+        <h3>${endMessage}</h3>
+        <p class="end-emoji">${endEmoji}</p>
+    </div>
+    `
 } 
 
 
