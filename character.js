@@ -28,17 +28,23 @@ function Character(data){
     this.getCharacterHtml = function(){
         const { elementID, name, avatar, health, diceCount,currentDiceScore, diceArray } = this;
 
+        const healthBar = this.getHealthBarHtml()
+        console.log("healthBar: ", healthBar)
+
         // const diceHTML = this.getDiceHTML(diceCount)  
 
         // document.getElementById(elementID).innerHTML = 
         return `
-        <div class="character-card">
-        <h4 class="name"> ${name} </h4>
-        <img class="avatar" src="${avatar}"/>
-        <p class="health">health: <b> ${health} </b></p>
-        <div class="dice-container">${diceArray}
-        </div>
-    </div> `
+            <div class="character-card">
+                <h4 class="name"> ${name} </h4>
+                <img class="avatar" src="${avatar}" />
+                <div class="health">health: <b> ${health} </b></div>
+                
+                <div class="dice-container">
+                    ${this.diceArray}
+                </div>
+                ${healthBar}
+            </div>`
     }
 
     this.takeDamage = function(attackScoreArray){
@@ -56,10 +62,19 @@ function Character(data){
         }else{
             this.health -= totalAttackScore
         }
-        console.log(getPercentage(this.maxHealth,this.health))
+       
         
     }
 
+    this.getHealthBarHtml = function(){
+        const percent =  getPercentage(this.maxHealth,this.health)
+        return `
+        <div class="health-bar-outer">
+            <div class="health-bar-inner ${percent < 26 ? "danger" : ""} " 
+            style="width: ${percent}%;">
+            </div>
+        </div>`
+    }
 } 
 
 export default Character
