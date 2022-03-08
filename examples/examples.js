@@ -59,3 +59,24 @@ const message = (playerGuess === correctAnswer) ? 'Correct!'
 : (playerGuess > correctAnswer)? 'too high!'
 : 'too low!'
 console.log(message)
+
+// -------------------------------------------------------------------------
+// arrow function
+
+// amount is the function parameter, single params do not need (), if no param replace with () and if 2+ param - use ()
+// const alertSpend = amount => {
+//     return `Warning you just spent $${amount}!`
+// }
+
+// can also get rid of {} and return. now is a one line function
+// {} and return needed if using more complex logic like if else
+const alertSpend = amount => `Warning you just spent $${amount}!`
+
+console.log(100)
+
+const speedAlert = (speedLimit,speed) => {
+    if(speed>speedLimit) {
+        return `You are going ${speed}mph!`
+    }
+}
+    console.log(speedAlert(30,60))
