@@ -14,15 +14,12 @@ function Character(data){
 
     this.getDiceHTML = function(){
         this.currentDiceScore = getDiceRollArray(this.diceCount)
-        this.diceArray = this.currentDiceScore.map(function(num){
-            return `<div class="dice">${num}</div>
-            `
-        }).join('')
 
-        // this.diceArray = getDiceRollArray(diceCount).map(function(num){
-        //     return `<div class="dice">${num}</div>
-        //    `
-        // }).join('')
+        this.diceArray = this.currentDiceScore.map((num) =>
+         `<div class="dice">${num}</div>
+            `).join('')
+
+        
     }
 
     this.getCharacterHtml = function(){
@@ -44,9 +41,9 @@ function Character(data){
     this.takeDamage = function(attackScoreArray){
 
         // sum all dice rolls
-        const totalAttackScore = attackScoreArray.reduce(function(total, roll){
-            return total + roll
-        })
+        const totalAttackScore = attackScoreArray.reduce((total, roll) =>
+        total + roll
+    )
 
         // keep health score from going negative
         if(this.health<totalAttackScore){
