@@ -1,4 +1,4 @@
-import {getDicePlaceholderHtml, getDiceRollArray} from './utils.js'
+import {getDicePlaceholderHtml, getDiceRollArray, getPercentage} from './utils.js'
 
 function Character(data){
     // this.elementID = data.elementID
@@ -7,6 +7,9 @@ function Character(data){
     // this.health = data.health
     // this.diceCount = data.diceCount
     Object.assign(this, data)
+
+    // set maxHealth to match initial health value
+    this.maxHealth = this.health
 
         // sets placeholder dice before attack button clicked
     this.diceArray = getDicePlaceholderHtml(this.diceCount)
@@ -53,7 +56,7 @@ function Character(data){
         }else{
             this.health -= totalAttackScore
         }
-       
+        console.log(getPercentage(this.maxHealth,this.health))
         
     }
 
