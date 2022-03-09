@@ -6,24 +6,23 @@ let monstersArray = ["orc", "demon", "goblin"]
 
 // create characters
 const wizard = new Character(characterData.hero)
-const orc = new Character(characterData.orc)
+let monster = getNewMonster()
 
 // render cards
 function render(){
 document.getElementById('hero').innerHTML = wizard.getCharacterHtml();
-document.getElementById('monster').innerHTML = orc.getCharacterHtml();
+document.getElementById('monster').innerHTML = monster.getCharacterHtml();
 }
 render()
 
-// test getNewMonster()
-getNewMonster()
+
 
 // getNewMonster
 function getNewMonster(){
     // characterData[orc]
     const nextMonsterData = characterData[monstersArray.shift()]
-
-    console.log(nextMonsterData)
+    // if nextMonsterData has data(1) return new Character else return empty
+    return nextMonsterData? new Character(nextMonsterData) : {}
 }
 
 
@@ -35,24 +34,24 @@ document.getElementById("attack-button").addEventListener("click", attack)
 function attack(){
     
     wizard.getDiceHTML()
-    orc.getDiceHTML()
+    monster.getDiceHTML()
     // pass score of opponent
-    wizard.takeDamage(orc.currentDiceScore)
-    orc.takeDamage(wizard.currentDiceScore)
+    wizard.takeDamage(monster.currentDiceScore)
+    monster.takeDamage(wizard.currentDiceScore)
     render()
-    if((wizard.dead) || (orc.dead)){
+    if((wizard.dead) || (monster.dead)){
         endGame()
     }
     
 }
 
 function endGame(){
-    const endMessage = (wizard.dead && orc.dead) ? 'No victors - everyone dead'
+    const endMessage = (wizard.dead && monster.dead) ? 'No victors - everyone dead'
     : (wizard.dead) ? 'Orc wins'
     : 'Wizard wins'
 
     const endEmoji = (wizard.health>0) ? '🔮'
-    : (orc.health>0) ? '💀'
+    : (monster.health>0) ? '💀'
     : "💀 💀"
     
     // replaces content of entire body
