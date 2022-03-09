@@ -92,3 +92,36 @@ const speedAlert = (speedLimit,speed) => {
     const distanceTraveledKm = distanceTraveledMiles.map((distance) => Math.round(distance * 1.6))
 
     console.log(distanceTraveledKm)
+
+//-----------------------------------------------------------------
+// setTimeOut()
+
+const question = 'What is the capital of Peru?'
+const answer = 'Lima!'
+
+console.log(question)
+// set 3sec delay before logging out answer
+// setTimeout(()=> console.log(answer), 3000)
+
+// can do this way as well
+// setTimeout(function () {
+//     console.log(answer)
+// }, 3000)
+
+// or
+setTimeout(revealAnswer, 3000)
+
+function revealAnswer() {
+    console.log(answer)
+}
+
+// 1
+console.log(`Once upon a time, a beautiful princess met a handsome prince.`) 
+// 5
+setTimeout(()=>console.log(`In the end, they lived happily ever after.`), 12000)
+// 2
+setTimeout(()=> console.log(`The princess's wicked stepmother put a curse on them before they could marry.`), 3000) 
+// 4
+setTimeout(()=>console.log(`They got married on a beautiful summer's day.`), 9000)
+// 3
+setTimeout(()=>console.log(`The prince found a friendly wizard to lift the curse.`), 6000)
