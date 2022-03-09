@@ -45,7 +45,9 @@ function attack(){
     }else if(monster.dead){
             console.log("Monster dead. Attempting new Monster")
             if(monstersArray.length>0){
+                console.log("Success")
             monster=getNewMonster()
+            render()
         }else{
             console.log("Out of monsters. Ending game.")
             endGame()
