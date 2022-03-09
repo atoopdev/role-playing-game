@@ -2,9 +2,11 @@ import characterData from './data.js'
 import Character from './character.js'
 import { getDiceRollArray } from './utils.js'
 
+let monstersArray = ["orc", "demon", "goblin"]
+
 // create characters
 const wizard = new Character(characterData.hero)
-const orc = new Character(characterData.monster)
+const orc = new Character(characterData.orc)
 
 // render cards
 function render(){
@@ -12,6 +14,20 @@ document.getElementById('hero').innerHTML = wizard.getCharacterHtml();
 document.getElementById('monster').innerHTML = orc.getCharacterHtml();
 }
 render()
+
+// test getNewMonster()
+getNewMonster()
+
+// getNewMonster
+function getNewMonster(){
+    // characterData[orc]
+    const nextMonsterData = characterData[monstersArray.shift()]
+
+    console.log(nextMonsterData)
+}
+
+
+
 
 // setup attack button
 document.getElementById("attack-button").addEventListener("click", attack)

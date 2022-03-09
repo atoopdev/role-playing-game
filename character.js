@@ -29,11 +29,7 @@ function Character(data){
         const { elementID, name, avatar, health, diceCount,currentDiceScore, diceArray } = this;
 
         const healthBar = this.getHealthBarHtml()
-        console.log("healthBar: ", healthBar)
-
-        // const diceHTML = this.getDiceHTML(diceCount)  
-
-        // document.getElementById(elementID).innerHTML = 
+        
         return `
             <div class="character-card">
                 <h4 class="name"> ${name} </h4>
