@@ -33,7 +33,7 @@ main {
 }
 
 .character-card {
-  height: 14rem;
+  height: 15rem;
   margin-top: 0.5rem;
   width: 94vw;
   max-width: 230px;
@@ -52,7 +52,7 @@ main {
 @media (min-width: 550px) {
   .character-card {
     border: 0.2rem solid #000721;
-    height: 26rem;
+    height: 33rem;
     width: 37vw;
   }
 }
@@ -91,14 +91,14 @@ main {
   font-weight: normal;
   width: 90%;
   text-align: left;
-  margin: 1vh 5%;
+  margin: 0vh 5%;
   color: #ccc;
   letter-spacing: 0.03em;
 }
 
 @media (min-width: 550px) {
   .health {
-    margin: 2vh 5%;
+    margin: 1vh 5%;
   }
 }
 
