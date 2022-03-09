@@ -39,15 +39,24 @@ function attack(){
     wizard.takeDamage(monster.currentDiceScore)
     monster.takeDamage(wizard.currentDiceScore)
     render()
-    if((wizard.dead) || (monster.dead)){
+    if(wizard.dead){
+        console.log("Wizard is dead")
         endGame()
+    }else if(monster.dead){
+            console.log("Monster dead. Attempting new Monster")
+            if(monstersArray.length>0){
+            monster=getNewMonster()
+        }else{
+            console.log("Out of monsters. Ending game.")
+            endGame()
+        }
     }
     
 }
 
 function endGame(){
     const endMessage = (wizard.dead && monster.dead) ? 'No victors - everyone dead'
-    : (wizard.dead) ? 'Orc wins'
+    : (wizard.dead) ? `${monster.name} wins`
     : 'Wizard wins'
 
     const endEmoji = (wizard.health>0) ? '🔮'
