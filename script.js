@@ -4,12 +4,12 @@ import { getDiceRollArray } from './utils.js'
 
 // create characters
 const wizard = new Character(characterData.hero)
-const evilMonster = new Character(characterData.monster)
+const orc = new Character(characterData.monster)
 
 // render cards
 function render(){
 document.getElementById('hero').innerHTML = wizard.getCharacterHtml();
-document.getElementById('monster').innerHTML = evilMonster.getCharacterHtml();
+document.getElementById('monster').innerHTML = orc.getCharacterHtml();
 }
 render()
 
@@ -19,24 +19,24 @@ document.getElementById("attack-button").addEventListener("click", attack)
 function attack(){
     
     wizard.getDiceHTML()
-    evilMonster.getDiceHTML()
+    orc.getDiceHTML()
     // pass score of opponent
-    wizard.takeDamage(evilMonster.currentDiceScore)
-    evilMonster.takeDamage(wizard.currentDiceScore)
+    wizard.takeDamage(orc.currentDiceScore)
+    orc.takeDamage(wizard.currentDiceScore)
     render()
-    if((wizard.dead) || (evilMonster.dead)){
+    if((wizard.dead) || (orc.dead)){
         endGame()
     }
     
 }
 
 function endGame(){
-    const endMessage = (wizard.dead && evilMonster.dead) ? 'No victors - everyone dead'
+    const endMessage = (wizard.dead && orc.dead) ? 'No victors - everyone dead'
     : (wizard.dead) ? 'Orc wins'
     : 'Wizard wins'
 
     const endEmoji = (wizard.health>0) ? '🔮'
-    : (evilMonster.health>0) ? '💀'
+    : (orc.health>0) ? '💀'
     : "💀 💀"
     
     // replaces content of entire body
