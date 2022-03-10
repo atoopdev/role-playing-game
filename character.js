@@ -49,14 +49,13 @@ function Character(data){
         const totalAttackScore = attackScoreArray.reduce((total, roll) =>
         total + roll
     )
+    this.health -= totalAttackScore
 
         // keep health score from going negative
-        if(this.health<totalAttackScore){
+        if(this.health<=0){
             this.health = 0
             this.dead = true
            
-        }else{
-            this.health -= totalAttackScore
         }
        
         

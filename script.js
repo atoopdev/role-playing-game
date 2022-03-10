@@ -41,16 +41,16 @@ function attack(){
     render()
     if(wizard.dead){
         console.log("Wizard is dead")
-        endGame()
+        setTimeout(endGame, 1500)
     }else if(monster.dead){
             console.log("Monster dead. Attempting new Monster")
             if(monstersArray.length>0){
                 console.log("Success")
             monster=getNewMonster()
-            render()
+            setTimeout(() =>render(), 1000)
         }else{
             console.log("Out of monsters. Ending game.")
-            endGame()
+            setTimeout(endGame, 1500)
         }
     }
     
