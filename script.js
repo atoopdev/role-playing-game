@@ -35,8 +35,8 @@ document.getElementById("attack-button").addEventListener("click", attack)
 
 function attack(){
     
-    wizard.getDiceHTML()
-    monster.getDiceHTML()
+    wizard.setDiceHTML()
+    monster.setDiceHTML()
     // pass score of opponent
     wizard.takeDamage(monster.currentDiceScore)
     monster.takeDamage(wizard.currentDiceScore)

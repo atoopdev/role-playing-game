@@ -12,13 +12,13 @@ function Character(data){
     this.maxHealth = this.health
 
         // sets placeholder dice before attack button clicked
-    this.diceArray = getDicePlaceholderHtml(this.diceCount)
+    this.diceArrayHTML = getDicePlaceholderHtml(this.diceCount)
 
 
-    this.getDiceHTML = function(){
+    this.setDiceHTML = function(){
         this.currentDiceScore = getDiceRollArray(this.diceCount)
 
-        this.diceArray = this.currentDiceScore.map((num) =>
+        this.diceArrayHTML = this.currentDiceScore.map((num) =>
          `<div class="dice">${num}</div>
             `).join('')
 
@@ -26,7 +26,7 @@ function Character(data){
     }
 
     this.getCharacterHtml = function(){
-        const { elementID, name, avatar, health, diceCount,currentDiceScore, diceArray } = this;
+        const { elementID, name, avatar, health, diceCount,currentDiceScore, diceArrayHTML } = this;
 
         const healthBar = this.getHealthBarHtml()
         
@@ -37,7 +37,7 @@ function Character(data){
                 <div class="health">health: <b> ${health} </b></div>
                 
                 <div class="dice-container">
-                    ${this.diceArray}
+                    ${diceArrayHTML}
                 </div>
                 ${healthBar}
             </div>`

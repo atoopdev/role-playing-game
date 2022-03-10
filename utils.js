@@ -5,27 +5,23 @@ function getDiceRollArray(diceCount){
     // create new array with length diceCount, autofill with zeros
     // for each element, generate random number simulating dice roll
     // save to array and return
-    return new Array(diceCount).fill("0").map(function(num){
-        return Math.floor(Math.random() * 6) +1
-    })
+    return new Array(diceCount).fill("0").map(() => 
+    Math.floor(Math.random() * 6) +1)
 
     // v1
     // for(let i=0;i<diceCount;i++){
     //     // number between 1 and 6
     //     randomNumbers.push(Math.floor(Math.random() * 6) +1)
     // }
-    console.log("Array of dice rolls: ", randomNumbers)
-    return randomNumbers;
     
     
 
 }
 
 function getDicePlaceholderHtml(diceCount){
-    return new Array(diceCount).fill("0").map(function(num){
-        return `<div class="placeholder-dice"></div>
-        `
-    }).join('')
+    return new Array(diceCount).fill("0").map(() =>
+        `<div class="placeholder-dice"></div>`
+    ).join('')
 }
 
 export {getDiceRollArray, getDicePlaceholderHtml, getPercentage}
