@@ -81,7 +81,10 @@ function endGame(){
     `
 } 
 
-
+// ideas for improvement - 
+// antimated dice
+// change rules of the game. role x get health boost
+// add more heroes
 
 
 
