@@ -1,6 +1,7 @@
 import {getDicePlaceholderHtml, getDiceRollArray, getPercentage} from './utils.js'
 
-function Character(data){
+class Character{
+    constructor(data){
     // this.elementID = data.elementID
     // this.name = data.name
     // this.avatar = data.avatar
@@ -13,9 +14,9 @@ function Character(data){
 
         // sets placeholder dice before attack button clicked
     this.diceArrayHTML = getDicePlaceholderHtml(this.diceCount)
+    }
 
-
-    this.setDiceHTML = function(){
+    setDiceHTML(){
         this.currentDiceScore = getDiceRollArray(this.diceCount)
 
         this.diceArrayHTML = this.currentDiceScore.map((num) =>
@@ -25,7 +26,7 @@ function Character(data){
         
     }
 
-    this.getCharacterHtml = function(){
+    getCharacterHtml(){
         const { elementID, name, avatar, health, diceCount,currentDiceScore, diceArrayHTML } = this;
 
         const healthBar = this.getHealthBarHtml()
@@ -43,7 +44,7 @@ function Character(data){
             </div>`
     }
 
-    this.takeDamage = function(attackScoreArray){
+    takeDamage(attackScoreArray){
 
         // sum all dice rolls
         const totalAttackScore = attackScoreArray.reduce((total, roll) =>
@@ -61,7 +62,7 @@ function Character(data){
         
     }
 
-    this.getHealthBarHtml = function(){
+    getHealthBarHtml(){
         const percent =  getPercentage(this.maxHealth,this.health)
         return `
         <div class="health-bar-outer">
