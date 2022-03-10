@@ -10,6 +10,8 @@ let monster = getNewMonster()
 
 // render cards
 function render(){
+    // make sure attack button is visible
+document.getElementById("attack-button").style.display = "block"
 document.getElementById('hero').innerHTML = wizard.getCharacterHtml();
 document.getElementById('monster').innerHTML = monster.getCharacterHtml();
 }
@@ -44,6 +46,8 @@ function attack(){
         setTimeout(endGame, 1500)
     }else if(monster.dead){
             console.log("Monster dead. Attempting new Monster")
+            // hide attack button
+            document.getElementById("attack-button").style.display = "none"
             if(monstersArray.length>0){
                 console.log("Success")
             monster=getNewMonster()
@@ -57,6 +61,8 @@ function attack(){
 }
 
 function endGame(){
+    // hide attack button
+    document.getElementById("attack-button").style.display = "none"
     const endMessage = (wizard.dead && monster.dead) ? 'No victors - everyone dead'
     : (wizard.dead) ? `${monster.name} wins`
     : 'Wizard wins'
